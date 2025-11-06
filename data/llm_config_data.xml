@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default Ollama Configuration -->
+        <record id="llm_config_default_ollama" model="llm.config">
+            <field name="name">Default Ollama</field>
+            <field name="sequence">10</field>
+            <field name="api_url">http://localhost:11434/v1/chat/completions</field>
+            <field name="api_token">ollama</field>
+            <field name="model_name">llama3.2</field>
+            <field name="temperature">0.7</field>
+            <field name="max_tokens">2048</field>
+            <field name="max_history_messages">50</field>
+            <field name="request_timeout">120000</field>
+            <field name="is_default">True</field>
+            <field name="system_prompt">You are a helpful AI assistant integrated into Odoo ERP system. Help users with their tasks, answer questions, and provide insights based on their business data. Keep responses clear, concise, and professional.</field>
+        </record>
+
+        <!-- LM Studio Configuration Example -->
+        <record id="llm_config_lm_studio" model="llm.config">
+            <field name="name">LM Studio (Example)</field>
+            <field name="sequence">20</field>
+            <field name="api_url">http://localhost:1234/v1/chat/completions</field>
+            <field name="api_token">lm-studio</field>
+            <field name="model_name">local-model</field>
+            <field name="temperature">0.7</field>
+            <field name="max_tokens">2048</field>
+            <field name="max_history_messages">50</field>
+            <field name="request_timeout">120000</field>
+            <field name="is_default">False</field>
+            <field name="active">False</field>
+            <field name="system_prompt">You are a helpful AI assistant integrated into Odoo ERP system. Help users with their tasks, answer questions, and provide insights based on their business data. Keep responses clear, concise, and professional.</field>
+        </record>
+    </data>
+</odoo>

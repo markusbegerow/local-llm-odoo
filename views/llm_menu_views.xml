@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_llm_root"
+              name="Local LLM"
+              web_icon="local_llm_odoo,static/description/icon.png"
+              sequence="100"/>
+
+    <!-- Chat Client Action -->
+    <record id="action_llm_chat_widget" model="ir.actions.client">
+        <field name="name">AI Chat</field>
+        <field name="tag">llm_chat_widget</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Chat Menu -->
+    <menuitem id="menu_llm_chat"
+              name="Chat"
+              parent="menu_llm_root"
+              action="action_llm_chat_widget"
+              sequence="10"/>
+
+    <!-- Conversation History Menu -->
+    <menuitem id="menu_llm_conversations"
+              name="Conversation History"
+              parent="menu_llm_root"
+              action="action_llm_conversation"
+              sequence="20"/>
+
+    <!-- Configuration Menu -->
+    <menuitem id="menu_llm_configuration"
+              name="Configuration"
+              parent="menu_llm_root"
+              sequence="90"/>
+
+    <menuitem id="menu_llm_config"
+              name="LLM Settings"
+              parent="menu_llm_configuration"
+              action="action_llm_config"
+              sequence="10"/>
+</odoo>
