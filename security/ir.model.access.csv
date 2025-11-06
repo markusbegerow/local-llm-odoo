@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_llm_config_user,llm.config.user,model_llm_config,base.group_user,1,1,1,0
-access_llm_config_manager,llm.config.manager,model_llm_config,base.group_system,1,1,1,1
-access_llm_conversation_user,llm.conversation.user,model_llm_conversation,base.group_user,1,1,1,1
-access_llm_message_user,llm.message.user,model_llm_message,base.group_user,1,1,1,1
