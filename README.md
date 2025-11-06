@@ -1,6 +1,8 @@
 # Local LLM Odoo Module
 
-A powerful Odoo 18 module that integrates local Large Language Models (LLMs) directly into your Odoo ERP system for AI-powered assistance - completely private and secure.
+A powerful Odoo 18 module that integrates local Large Language Models (LLMs) directly into your Odoo ERP system for AI-powered assistance.
+
+<img alt="image" src="https://github.com/markusbegerow/local-llm-odoo/blob/d1f0183252624764d8034d008f1675cdd8316a75/static/description/banner.png?raw=true" />
 
 ## Features
 
