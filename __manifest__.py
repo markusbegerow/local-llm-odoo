@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Local LLM Chat',
-    'version': '1.0.0',
+    'version': '18.0.1.0.0',
     'category': 'Productivity',
     'summary': 'Integrate Local LLMs (Ollama, LM Studio) into Odoo for AI-powered assistance with enterprise security',
     'description': """
