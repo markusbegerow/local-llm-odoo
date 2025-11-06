@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- LLM Config Tree View -->
+    <record id="view_llm_config_tree" model="ir.ui.view">
+        <field name="name">llm.config.tree</field>
+        <field name="model">llm.config</field>
+        <field name="arch" type="xml">
+            <list string="LLM Configurations">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="model_name"/>
+                <field name="api_url"/>
+                <field name="is_default"/>
+                <field name="user_id"/>
+                <field name="active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- LLM Config Form View -->
+    <record id="view_llm_config_form" model="ir.ui.view">
+        <field name="name">llm.config.form</field>
+        <field name="model">llm.config</field>
+        <field name="arch" type="xml">
+            <form string="LLM Configuration">
+                <header>
+                    <button name="test_connection" string="Test Connection" type="object" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="e.g., Ollama Llama3.2"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="API Settings">
+                            <field name="api_url" placeholder="http://localhost:11434/v1/chat/completions"/>
+                            <field name="api_token" password="True" placeholder="ollama or your API key"/>
+                            <field name="model_name" placeholder="llama3.2"/>
+                        </group>
+                        <group string="General Settings">
+                            <field name="sequence"/>
+                            <field name="is_default"/>
+                            <field name="user_id" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    <group string="Model Parameters">
+                        <group>
+                            <field name="temperature"/>
+                            <field name="max_tokens"/>
+                        </group>
+                        <group>
+                            <field name="max_history_messages"/>
+                            <field name="request_timeout"/>
+                        </group>
+                    </group>
+                    <group string="System Prompt">
+                        <field name="system_prompt" nolabel="1" widget="text" placeholder="Define how the AI should behave..."/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- LLM Config Search View -->
+    <record id="view_llm_config_search" model="ir.ui.view">
+        <field name="name">llm.config.search</field>
+        <field name="model">llm.config</field>
+        <field name="arch" type="xml">
+            <search string="Search LLM Configurations">
+                <field name="name"/>
+                <field name="model_name"/>
+                <field name="user_id"/>
+                <filter string="Default" name="default" domain="[('is_default', '=', True)]"/>
+                <filter string="My Configurations" name="my_configs" domain="[('user_id', '=', uid)]"/>
+                <filter string="System Configurations" name="system_configs" domain="[('user_id', '=', False)]"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="User" name="group_user" context="{'group_by': 'user_id'}"/>
+                    <filter string="Model" name="group_model" context="{'group_by': 'model_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- LLM Config Action -->
+    <record id="action_llm_config" model="ir.actions.act_window">
+        <field name="name">LLM Configurations</field>
+        <field name="res_model">llm.config</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first LLM Configuration
+            </p>
+            <p>
+                Configure your local LLM server (Ollama, LM Studio, etc.) to start chatting with AI.
+            </p>
+        </field>
+    </record>
+</odoo>
